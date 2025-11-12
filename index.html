@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="images/icon-sunny.webp" alt="sunny-icon">
+            <h1>Weather Now</h1>
+        </div>
+        <div>
+            <button class="unit-button">Units</button>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <h2 class="main-title">How's the sky looking today?</h2>
+
+        <form>
+            <input type="text" name="city" id="city-input" placeholder="Search for a place...">
+            <button type="submit" id="search-btn">Search</button>
+        </form>
+
+        <section class="weather-info">
+            <div class="current-weather">
+                <div class="location">
+                    <h3 class="city">Berlin, Germany</h3>
+                    <p>Tuesday, Aug 5, 2025</p>
+                </div>
+                <div class="temperature">
+                    <img src="images/icon-sunny.webp" alt="sunny-icon">
+                    <p>20</p>
+                </div>
+            </div>
+
+            <div class="extra-info">
+                <div class="info-card">
+                    <p>Feels Like</p>
+                    <h4>18</h4>
+                </div>
+                <div class="info-card">
+                    <p>Humidty</p>
+                    <h4>46%</h4>
+                </div>
+                <div class="info-card">
+                    <p>Wind</p>
+                    <h4>14km/h</h4>
+                </div>
+                <div class="info-card">
+                    <p>Precipitation</p>
+                    <h4>0 mm</h4>
+                </div>
+            </div>
+        </section>
+
+        <section class="forecast"> 
+            <div class="hourly">
+                <div class="forecast-header">
+                    <h3>Hourly forecast</h3>
+                    <p class="forecast-day">Tuesday</p>
+                </div>
+                <div class="hourly-list">
+
+                </div>
+            </div>
+
+            <div class="daily">
+                <h3>Daily forecast</h3>
+                <div class="daily-list">
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
