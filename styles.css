@@ -38,37 +38,51 @@
 }
 
 body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+
     font-family: var(--FF-DM);
     font-weight: var(--FW-DM3);
     background-color: var(--Neutral-900);
     color: var(--Neutral-0);
     text-align: center;
+    padding: 1rem;
+}
+
+.header, .main-container{
+    width: 100%;
+    max-width: 400px;
 }
 
 .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 2rem 2rem 2rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem ;
 }
-
-
 
 .logo{
     display: flex;
     align-items: center;
-    gap: 1px;
+    gap: 0.5rem;
 }
 
-.logo h1{
-    font-size: 1.5rem;
-    color: var(--Neutral-900);
+.logo img{
+    width: 200px;
+    height: 24px;
 }
 
 .unit-button{
     background-color: var(--Neutral-700);
-    padding: 0.2rem;
+    padding: 0.5rem 1rem;
     color: var(--Neutral-0);
+    border-radius: 6px;
+    cursor: pointer;
+    
 }
 
 .main-title{
@@ -104,12 +118,7 @@ body{
     border: none;
 }
 
-.main-container{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 2rem;
-    align-items: start;
-}
+
 
 .weather-info{
     border: 1px solid red;
