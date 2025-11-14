@@ -269,9 +269,60 @@ body{
 }
 
 
-
-
-
 .hourly-list img{
     width: 50px;
+}
+
+
+
+@media (min-width: 1024px) {
+    body{
+        padding: 2rem 6rem;
+    }
+
+    .main-container{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        align-items: start;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /*left column*/
+    .weather-info, .daily-forecast{
+        grid-column: 1;
+    }
+
+    /*right column*/
+    .hourly-forecast{
+       grid-column: 2;
+       position: sticky;
+    }
+
+    .search-bar{
+        flex-direction: row;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+
+    .search-bar input{
+        flex: 1;
+    }
+
+    .search-bar button{
+        width: auto;
+    }
+    .current-weather{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .extra-info{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .daily-forecast{
+        grid-template-columns: repeat(7, 1fr);
+    }
 }
