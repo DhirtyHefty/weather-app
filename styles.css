@@ -122,7 +122,7 @@ body{
 }
 
 .current-weather{
-    border: 1px dashed orange;
+    border: 3px dashed orange;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -130,6 +130,11 @@ body{
     background-color: var(--Blue-500);
     border-radius: 16px;
     padding: 1rem;
+
+    background-image: url(images/bg-today-small.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+
 }
 
 .location h3{
@@ -274,30 +279,34 @@ body{
 }
 
 
-
+/*
 @media (min-width: 1024px) {
     body{
-        padding: 2rem 6rem;
+        padding: 2rem 2rem;
     }
 
     .main-container{
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 2rem;
-        align-items: start;
-        max-width: 1200px;
-        margin: 0 auto;
+       display: flex;
+       gap: 2rem;
+       max-width: 1400px;
+       margin: 0 auto;
+       border: 6px solid orange;
+;
+    }
+    .temperature{
+        margin-bottom: 10rem;
     }
 
-    /*left column*/
-    .weather-info, .daily-forecast{
-        grid-column: 1;
+    .left-col{
+        flex: 1;
+        border: 1px solid red;
     }
 
-    /*right column*/
     .hourly-forecast{
-       grid-column: 2;
-       position: sticky;
+        flex: 1.2;
+        border: 1px solid red;
+        height: 100%;
+
     }
 
     .search-bar{
@@ -314,15 +323,55 @@ body{
         width: auto;
     }
     .current-weather{
+        padding: 1rem;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+        background-image: url(images/bg-today-large.svg);
+        background-size: cover;
+        
     }
 
+    
     .extra-info{
         grid-template-columns: repeat(4, 1fr);
+        padding: 3rem 0 3rem;
+        width: 100%;
+
+        height: auto;
+    }
+
+    .info-card{
+        padding: 2rem;
     }
     .daily-forecast{
         grid-template-columns: repeat(7, 1fr);
+    }
+}
+*/
+
+@media (min-width: 1024px) {
+    body{
+        padding: 2rem 2rem;
+    }
+
+    .header{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .search-bar{
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    .search-bar input{
+        flex: 2;
+    }
+    .search-bar button{
+        width: auto;
+    }
+    
+    .main-container{
+        display: grid;
     }
 }
