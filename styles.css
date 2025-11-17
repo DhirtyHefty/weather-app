@@ -11,7 +11,7 @@
 
 :root{
     /*Font DM Sans*/
-    --FF-DM: "DM Sans", sans-serif;
+    --FF-DM: 'DM Sans', sans-serif;
     --FW-DM3: 300;
     --FW-DM4: 400;
     --FW-DM5: 500;
@@ -19,7 +19,7 @@
     --FW-DM7: 700;
     
     /*Font Bricolage */
-    --FF: "Bricolage Grotesque", sans-serif;
+    --FF: 'Bricolage Grotesque', sans-serif;
     --FW-Bricolage: 700;
 
     /*Color*/
@@ -40,7 +40,6 @@
 body{
   
     font-family: var(--FF-DM);
-    font-weight: var(--FW-DM3);
     background-color: var(--Neutral-900);
     color: var(--Neutral-0);
     text-align: center;
@@ -56,7 +55,73 @@ body{
     padding: 1rem 1rem;
 }
 
+.units-dropdown {
+  position: relative;
+  display: inline-block;
+}
 
+.units-btn {
+  background: var(--Neutral-700);
+  border: none;
+  padding: 10px 16px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  width: 220px;
+  background: var(--Neutral-800);
+  padding: 15px;
+  border-radius: 12px;
+  display: none;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.units-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.section-title {
+  color: var(--Neutral-300);
+  font-size: 13px;
+  margin: 15px 0 5px;
+  text-transform: uppercase;
+}
+
+.item {
+  position: relative;
+  padding: 8px 32px 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  color: var(--Neutral-200);
+  cursor: pointer;
+}
+
+
+
+.item .check{
+    position: absolute;
+    right: 10px;
+    opacity: 0;
+    transition: 0.2s ease;
+}
+
+.item.selected .check{
+    background-color: var(--Neutral-800);
+}
+
+.item.item.selected .check{
+    opacity: 1;
+}
+
+.item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
 
 .logo img{
     width: 130px;
@@ -89,6 +154,10 @@ body{
     flex-direction: column;    
     gap: 0.5rem;
     margin-bottom: 1rem;
+}
+
+.search-bar ::placeholder{
+    color: var(--Neutral-200);
 }
 
 .search-bar input{
@@ -275,6 +344,10 @@ body{
 
 .hourly-list img{
     width: 50px;
+}
+
+h1, h2, h3{
+    font-family: var(--FF);
 }
 
 
