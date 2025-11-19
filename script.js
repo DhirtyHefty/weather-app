@@ -11,7 +11,7 @@
   let lastWeatherData = null;  
   let lastLocation = null; // { displayName, lat, lon }  
   
-  // ----------------- DOM refs (matching your HTML) -----------------  
+  // DOM refs  
   const unitsBtn = document.getElementById('unitsBtn');  
   const unitsMenu = document.getElementById('unitsMenu');  
   const unitItems = Array.from(unitsMenu.querySelectorAll('.item'));  
@@ -48,7 +48,8 @@
   const round = v => Math.round(v);  
   const formatTemp = v => `${round(v)}°`;  
   
-  // map Open-Meteo weather codes to your local icon filenames (you said these exist)  
+  // map Open-Meteo weather codes to your local icon filenames 
+  
   function weatherCodeToIcon(code) {  
     // codes reference: https ://open-meteo.com/en/docs (common mapping)  
     if (code === 0) return 'icon-sunny.webp';  
@@ -391,7 +392,7 @@
     // Group indices by date (YYYY-MM-DD)  
     const groups = {};  
     for (let i = 0; i < times.length; i++) {  
-      const dateKey = times[i].slice(0, 10);  
+      const dateKey = times[i].slice(0, 15);  
       if (!groups[dateKey]) groups[dateKey] = { indices: [], label: (new Date(times[i])).toLocaleDateString(undefined, { weekday: 'long' }) };  
       groups[dateKey].indices.push(i);  
     }  
