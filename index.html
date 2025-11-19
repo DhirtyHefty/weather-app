@@ -1,233 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Weather App</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <img src="images/logo.svg" alt="sunny-icon">
-        </div>
-        <div class="units-dropdown">
-  <button class="units-btn">
-    Units ▾
-  </button>
-
-  <div class="dropdown-menu">
-    
-    <p class="section-title">Temperature</p>
-    <div class="item" data-unit="celsius">Celsius (°C)<span class="check">✓</span></div>
-    <div class="item" data-unit="fahrenheit">Fahrenheit (°F)<span class="check">✓</span></div>
-
-    <p class="section-title">Wind Speed</p>
-    <div class="item" data-unit="kmh">km/h<span class="check">✓</span></div>
-    <div class="item" data-unit="mph">mph<span class="check">✓</span></div>
-
-    <p class="section-title">Precipitation</p>
-    <div class="item" data-unit="mm">Millimeters (mm)<span class="check">✓</span></div>
-    <div class="item" data-unit="inches">Inches (in)<span class="check">✓</span></div>
-
-  </div>
-</div>
-    </header>
-
-    <div class="main-top">
-         <h2 class="main-title">How's the sky looking today?</h2>
-
-        <form class="search-bar">
-            <input type="text" name="city" id="city-input" placeholder="Search for a place...">
-            <button type="submit" id="search-btn">Search</button>
-        </form>
+  <header class="header">
+    <div class="logo" aria-hidden="true">
+      <img src="images/logo.svg" alt="Sunny logo" />
     </div>
 
-    <main class="main-container">
-         
-        <!--MAIN WEATHER CARD-->
-        <div class="left-col">
-        <section class="weather-info">
-            <div class="current-weather">
-                <div class="location">
-                    <h3 class="city">Berlin, Germany</h3>
-                    <p class="date">Tuesday, Aug 5, 2025</p>
-                </div>
-                <div class="temperature">
-                    <img src="images/icon-sunny.webp" alt="sunny-icon">
-                    <p class="temp">20&deg;</p>
-                </div>
-            </div>
+    <div class="controls">
+      <div class="units-dropdown" aria-haspopup="menu">
+        <button class="units-btn" id="unitsBtn" aria-expanded="false" aria-controls="unitsMenu">
+          Units ▾
+        </button>
 
-            <div class="extra-info">
-                <div class="info-card">
-                    <p>Feels Like</p>
-                    <h4>18&deg;</h4>
-                </div>
-                <div class="info-card">
-                    <p>Humidty</p>
-                    <h4>46%</h4>
-                </div>
-                <div class="info-card">
-                    <p>Wind</p>
-                    <h4>14&nbsp;km/h</h4>
-                </div>
-                <div class="info-card">
-                    <p>Precipitation</p>
-                    <h4>0&nbsp;mm</h4>
-                </div>
+        <div class="dropdown-menu" id="unitsMenu" role="menu" aria-hidden="true">
+          <div class="dropdown-section">
+            <p class="section-title">Temperature</p>
+            <div class="item" role="menuitemradio" data-unit="celsius" tabindex="0">
+              <span>Celsius (°C)</span><span class="check">✓</span>
             </div>
-        </section>
+            <div class="item" role="menuitemradio" data-unit="fahrenheit" tabindex="0">
+              <span>Fahrenheit (°F)</span><span class="check">✓</span>
+            </div>
+          </div>
 
-        <section class="daily-section">
-        <h3 class="daily-forecast-header">Daily forecast</h3>
-        <div class="daily-forecast">
-            <div class="daily-list">
-                <p class="day">Tue</p>
-                <img src="images/icon-rain.webp" alt="rain-icon">
-                    <div class="degree-bottom">
-                        <p>20&deg;</p>
-                        <p>14&deg;</p>
-                    </div>
+          <div class="dropdown-section">
+            <p class="section-title">Wind</p>
+            <div class="item" role="menuitemradio" data-unit="kmh" tabindex="0">
+              <span>km/h</span><span class="check">✓</span>
             </div>
-            <div class="daily-list">
-                <p class="day">Wed</p>
-                <img src="images/icon-drizzle.webp" alt="drizzle-icon">
-                    <div class="degree-bottom">
-                        <p>21&deg;</p>
-                        <p>15&deg;</p>
-                    </div>
+            <div class="item" role="menuitemradio" data-unit="mph" tabindex="0">
+              <span>mph</span><span class="check">✓</span>
             </div>
-            <div class="daily-list">
-                <p class="day">Thu</p>
-                <img src="images/icon-sunny.webp" alt="sunny-icon">
-                    <div class="degree-bottom">
-                        <p>24&deg;</p>
-                        <p>14&deg;</p>
-                    </div>
+          </div>
+
+          <div class="dropdown-section">
+            <p class="section-title">Precipitation</p>
+            <div class="item" role="menuitemradio" data-unit="mm" tabindex="0">
+              <span>Millimeters (mm)</span><span class="check">✓</span>
             </div>
-            <div class="daily-list">
-                <p class="day">Fri</p>
-                <img src="images/icon-partly-cloudy.webp" alt="partly-cloudy-icon">
-                    <div class="degree-bottom">
-                        <p>25&deg;</p>
-                        <p>13&deg;</p>
-                    </div>
+            <div class="item" role="menuitemradio" data-unit="inches" tabindex="0">
+              <span>Inches (in)</span><span class="check">✓</span>
             </div>
-            <div class="daily-list">
-                <p class="day">Sat</p>
-                <img src="images/icon-storm.webp" alt="storm-icon">
-                    <div class="degree-bottom">
-                        <p>21&deg;</p>
-                        <p>15&deg;</p>
-                    </div>
-            </div>
-            <div class="daily-list">
-                <p class="day">Sun</p>
-                <img src="images/icon-snow.webp" alt="snow-icon">
-                    <div class="degree-bottom">
-                        <p>25&deg;</p>
-                        <p>16&deg;</p>
-                    </div>
-            </div>
-            <div class="daily-list">
-                <p class="day">Mon</p>
-                <img src="images/icon-fog.webp" alt="fog-icon">
-                    <div class="degree-bottom">
-                        <p>24&deg;</p>
-                        <p>15&deg;</p>
-                    </div>
-            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-top">
+    <h1 class="main-title">How's the sky looking today?</h1>
+
+    <form class="search-bar" role="search" aria-label="Search city">
+      <div class="city-dropdown-container">
+        <input
+          type="text"
+          name="city"
+          id="citySearch"
+          placeholder="Search for a place..."
+          autocomplete="off"
+          aria-autocomplete="list"
+          aria-controls="cityList"
+        />
+        <ul class="city-dropdown" id="cityList" role="listbox" aria-hidden="true"></ul>
+      </div>
+
+      <button type="submit" id="search-btn">Search</button>
+    </form>
+  </div>
+
+  <main class="main-container" role="main">
+    <div class="content-wrapper">
+      <!-- LEFT COLUMN -->
+      <section class="left-col" aria-labelledby="currentWeatherHeading">
+        <article class="weather-info">
+          <div class="current-weather" role="region" aria-labelledby="currentWeatherHeading">
+            <div class="location">
+              <h2 id="currentWeatherHeading" class="city">Berlin, Germany</h2>
+              <p class="date">Tuesday, Aug 5, 2025</p>
+            </div>
+
+            <div class="temperature" aria-live="polite">
+              <img src="images/icon-sunny.webp" alt="Sunny" />
+              <p class="temp">20&deg;</p>
+            </div>
+          </div>
+
+          <div class="extra-info" aria-label="Additional weather info">
+            <div class="info-card">
+              <p>Feels like</p>
+              <h4>18&deg;</h4>
+            </div>
+
+            <div class="info-card">
+              <p>Humidity</p>
+              <h4>46%</h4>
+            </div>
+
+            <div class="info-card">
+              <p>Wind</p>
+              <h4>14&nbsp;km/h</h4>
+            </div>
+
+            <div class="info-card">
+              <p>Precipitation</p>
+              <h4>0&nbsp;mm</h4>
+            </div>
+          </div>
+        </article>
+
+        <section class="daily-section" aria-labelledby="dailyForecastHeading">
+          <h3 id="dailyForecastHeading" class="daily-forecast-header">Daily forecast</h3>
+
+          <ul class="daily-forecast" role="list">
+            <li class="daily-item">
+              <p class="day">Tue</p>
+              <img src="images/icon-rain.webp" alt="Rain" />
+              <div class="degree-bottom"><span>20&deg;</span><span>14&deg;</span></div>
+            </li>
+
+            <li class="daily-item">
+              <p class="day">Wed</p>
+              <img src="images/icon-drizzle.webp" alt="Drizzle" />
+              <div class="degree-bottom"><span>21&deg;</span><span>15&deg;</span></div>
+            </li>
+
+            <li class="daily-item">
+              <p class="day">Thu</p>
+              <img src="images/icon-sunny.webp" alt="Sunny" />
+              <div class="degree-bottom"><span>24&deg;</span><span>14&deg;</span></div>
+            </li>
+
+            <li class="daily-item">
+              <p class="day">Fri</p>
+              <img src="images/icon-partly-cloudy.webp" alt="Partly Cloudy" />
+              <div class="degree-bottom"><span>25&deg;</span><span>13&deg;</span></div>
+            </li>
+
+            <li class="daily-item">
+              <p class="day">Sat</p>
+              <img src="images/icon-storm.webp" alt="Storm" />
+              <div class="degree-bottom"><span>21&deg;</span><span>15&deg;</span></div>
+            </li>
+
+            <li class="daily-item">
+              <p class="day">Sun</p>
+              <img src="images/icon-snow.webp" alt="Snow" />
+              <div class="degree-bottom"><span>25&deg;</span><span>16&deg;</span></div>
+            </li>
+
+            <li class="daily-item">
+              <p class="day">Mon</p>
+              <img src="images/icon-fog.webp" alt="Fog" />
+              <div class="degree-bottom"><span>24&deg;</span><span>15&deg;</span></div>
+            </li>
+          </ul>
         </section>
+      </section>
+
+      <!-- RIGHT COLUMN: hourly -->
+      <aside class="right-col" aria-labelledby="hourlyHeading">
+        <div class="hourly-forecast" role="region" aria-labelledby="hourlyHeading">
+          <div class="hourly-header">
+            <h3 id="hourlyHeading">Hourly Forecast</h3>
+
+            <div class="day-dropdown-container">
+              <button class="day-btn" id="dayBtn" aria-expanded="false" aria-controls="dayMenu">Tuesday ▾</button>
+              <div class="day-dropdown" id="dayMenu" role="menu" aria-hidden="true">
+                <button class="day-option" role="menuitem">Monday</button>
+                <button class="day-option" role="menuitem">Tuesday</button>
+                <button class="day-option" role="menuitem">Wednesday</button>
+                <button class="day-option" role="menuitem">Thursday</button>
+                <button class="day-option" role="menuitem">Friday</button>
+                <button class="day-option" role="menuitem">Saturday</button>
+                <button class="day-option" role="menuitem">Sunday</button>
+              </div>
+            </div>
+          </div>
+
+          <ul class="hourly-list" role="list">
+            <li class="hourly-item">
+              <div class="time-icon">
+                <img src="images/icon-overcast.webp" alt="Overcast" />
+                <span>3 PM</span>
+              </div>
+              <span class="hour-temp">20&deg;</span>
+            </li>
+
+            <li class="hourly-item">
+              <div class="time-icon">
+                <img src="images/icon-partly-cloudy.webp" alt="Partly Cloudy" />
+                <span>4 PM</span>
+              </div>
+              <span class="hour-temp">20&deg;</span>
+            </li>
+
+            <li class="hourly-item">
+              <div class="time-icon">
+                <img src="images/icon-sunny.webp" alt="Sunny" />
+                <span>5 PM</span>
+              </div>
+              <span class="hour-temp">20&deg;</span>
+            </li>
+
+            <li class="hourly-item">
+              <div class="time-icon">
+                <img src="images/icon-overcast.webp" alt="Overcast" />
+                <span>6 PM</span>
+              </div>
+              <span class="hour-temp">19&deg;</span>
+            </li>
+
+            <li class="hourly-item">
+              <div class="time-icon">
+                <img src="images/icon-snow.webp" alt="Snow" />
+                <span>7 PM</span>
+              </div>
+              <span class="hour-temp">18&deg;</span>
+            </li>
+
+            <li class="hourly-item">
+              <div class="time-icon">
+                <img src="images/icon-fog.webp" alt="Fog" />
+                <span>8 PM</span>
+              </div>
+              <span class="hour-temp">18&deg;</span>
+            </li>
+
+            <li class="hourly-item">
+              <div class="time-icon">
+                <img src="images/icon-snow.webp" alt="Snow" />
+                <span>9 PM</span>
+              </div>
+              <span class="hour-temp">17&deg;</span>
+            </li>
+
+            <li class="hourly-item">
+              <div class="time-icon">
+                <img src="images/icon-overcast.webp" alt="Overcast" />
+                <span>10 PM</span>
+              </div>
+              <span class="hour-temp">17&deg;</span>
+            </li>
+          </ul>
         </div>
+      </aside>
+    </div>
+  </main>
 
-        <!--HOURLY FORECAST-->
-        <section>
-            <div class="hourly-forecast">
-                <div class="hourly-header">
-                    <h3>Hourly Forecast</h3>
-                    <button>Tuesday</button>
-                </div>
-                <div class="hourly-list">
-                    <div class="hourly-item">
-                        <div class="time-icon">
-                            <img src="images/icon-overcast.webp" alt="icon-overcast"> 
-                            <span>3 PM</span>
-                        </div>
-                        <span>20&deg;</span>                     
-                    </div>
-                </div>
-                <div class="hourly-list">
-                    <div class="hourly-item">
-                        <div class="time-icon">
-                            <img src="images/icon-partly-cloudy.webp" alt="partly-cloudy-icon"> 
-                            <span>4 PM</span>
-                        </div>
-                        <span>20&deg;</span>                     
-                    </div>
-                </div>
-                <div class="hourly-list">
-                    <div class="hourly-item">
-                        <div class="time-icon">
-                            <img src="images/icon-sunny.webp" alt="sunny-icon"> 
-                            <span>5 PM</span>
-                        </div>
-                        <span>20&deg;</span>                     
-                    </div>
-                </div>
-                <div class="hourly-list">
-                    <div class="hourly-item">
-                        <div class="time-icon">
-                            <img src="images/icon-overcast.webp" alt="icon-overcast"> 
-                            <span>6 PM</span>
-                        </div>
-                        <span>19&deg;</span>                     
-                    </div>
-                </div>
-                <div class="hourly-list">
-                    <div class="hourly-item">
-                        <div class="time-icon">
-                            <img src="images/icon-snow.webp" alt="snow-icon"> 
-                            <span>7 PM</span>
-                        </div>
-                        <span>18&deg;</span>                     
-                    </div>
-                </div>
-                <div class="hourly-list">
-                    <div class="hourly-item">
-                        <div class="time-icon">
-                            <img src="images/icon-fog.webp" alt="fog-icon"> 
-                            <span>8 PM</span>
-                        </div>
-                        <span>18&deg;</span>                     
-                    </div>
-                </div>
-                <div class="hourly-list">
-                    <div class="hourly-item">
-                        <div class="time-icon">
-                            <img src="images/icon-snow.webp" alt="snow-icon"> 
-                            <span>9 PM</span>
-                        </div>
-                        <span>17&deg;</span>                     
-                    </div>
-                </div>
-                <div class="hourly-list">
-                    <div class="hourly-item">
-                        <div class="time-icon">
-                            <img src="images/icon-overcast.webp" alt="icon-overcast"> 
-                            <span>10 PM</span>
-                        </div>
-                        <span>17&deg;</span>                     
-                    </div>
-                </div>
-               
-            </div>
-            </div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
