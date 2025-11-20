@@ -49,7 +49,7 @@
   const formatTemp = v => `${round(v)}°`;  
   
   // map Open-Meteo weather codes to your local icon filenames 
-  
+    
   function weatherCodeToIcon(code) {  
     // codes reference: https ://open-meteo.com/en/docs (common mapping)  
     if (code === 0) return 'icon-sunny.webp';  
@@ -343,7 +343,7 @@
     const min = data.daily.temperature_2m_min || [];  
     const codes = data.daily.weathercode || [];  
   
-    for (let i = 0; i < times.length; i++) {  
+    for (let i = 0; i < 7; i++) {  
       const li = document.createElement('li');  
       li.className = 'daily-item';  
   
@@ -392,7 +392,7 @@
     // Group indices by date (YYYY-MM-DD)  
     const groups = {};  
     for (let i = 0; i < times.length; i++) {  
-      const dateKey = times[i].slice(0, 15);  
+      const dateKey = times[i].slice(0, 10);  
       if (!groups[dateKey]) groups[dateKey] = { indices: [], label: (new Date(times[i])).toLocaleDateString(undefined, { weekday: 'long' }) };  
       groups[dateKey].indices.push(i);  
     }  
@@ -431,7 +431,7 @@
     hourlyContainer.innerHTML = '';  
   
     // Optionally show many or all hours (we're dynamic per your chosen 'B')  
-    indices.forEach(i => {  
+    indices.slice(0, 8).forEach(i => {  
       const li = document.createElement('li');  
       li.className = 'hourly-item';  
   
