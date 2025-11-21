@@ -168,7 +168,9 @@ body {
 }
 
 .search-bar button {
-  width: 50%;
+  width: 210px;
+  white-space: nowrap;
+
   padding: 12px;
   border-radius: 10px;
   border: none;
