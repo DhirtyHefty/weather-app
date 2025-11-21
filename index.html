@@ -56,6 +56,26 @@
   <div class="main-top">
     <h1 class="main-title">How's the sky looking today?</h1>
 
+    <section id="loading-state" class="state-hidden">
+  <div class="loading-box">
+    <div class="loading-dot">
+      <span></span><span></span><span></span>
+    </div>
+    <p>Loading...</p>
+  </div>
+</section>
+
+<section id="no-results-state" class="state-hidden">
+  <p class="state-message">No search results found</p>
+</section>
+
+<section class="state-hidden" id="error-state">
+  <img src="images/error-icon.svg" class="error-icon" alt="Error icon" />
+  <h2>Something went wrong</h2>
+  <p>We couldn’t connect to the server (API error). Please try again in a moment.</p>
+  <button id="retry-btn" class="retry-btn">Retry</button>
+</section>
+
     <form class="search-bar" role="search" aria-label="Search city">
       <div class="city-dropdown-container">
         <input

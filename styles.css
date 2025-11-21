@@ -49,6 +49,64 @@ body {
   height: auto;
 }
 
+
+.state-hidden {
+  display: none !important;
+}
+
+.state {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--Neutral-300);
+}
+
+.loading-box{
+  background-color: var(--Neutral-600);
+  border-radius: 14px;
+  padding :40px;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.loading-dot{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.loading-dot span{
+  width: 15px;
+  height: 15px;
+  background-color: var(--ORANGE);
+  border-radius: 50%;
+  display: block;
+  }
+
+#no-results-state .state-message{
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+#error-state .error-icon{
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+#error-state h2{
+  margin-bottom: 8px;
+}
+
+.retry-btn{
+  margin-top: 15px;
+  background-color: var(--Neutral-600);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--Neutral-200);
+}
 /* Controls wrapper */
 .controls {
   display: flex;
