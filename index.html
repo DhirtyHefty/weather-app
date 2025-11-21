@@ -56,25 +56,17 @@
   <div class="main-top">
     <h1 class="main-title">How's the sky looking today?</h1>
 
-    <section id="loading-state" class="state-hidden">
-  <div class="loading-box">
-    <div class="loading-dot">
-      <span></span><span></span><span></span>
-    </div>
-    <p>Loading...</p>
-  </div>
-</section>
+    <!-- Loading/No-results/Error states (top area) -->
+    <section id="no-results-state" class="state-hidden">
+      <p class="state-message">No search results found</p>
+    </section>
 
-<section id="no-results-state" class="state-hidden">
-  <p class="state-message">No search results found</p>
-</section>
-
-<section class="state-hidden" id="error-state">
-  <img src="images/error-icon.svg" class="error-icon" alt="Error icon" />
-  <h2>Something went wrong</h2>
-  <p>We couldn’t connect to the server (API error). Please try again in a moment.</p>
-  <button id="retry-btn" class="retry-btn">Retry</button>
-</section>
+    <section class="state-hidden" id="error-state">
+      <img src="images/error-icon.svg" class="error-icon" alt="Error icon" />
+      <h2>Something went wrong</h2>
+      <p>We couldn’t connect to the server (API error). Please try again in a moment.</p>
+      <button id="retry-btn" class="retry-btn">Retry</button>
+    </section>
 
     <form class="search-bar" role="search" aria-label="Search city">
       <div class="city-dropdown-container">
@@ -100,18 +92,24 @@
       <section class="left-col" aria-labelledby="currentWeatherHeading">
         <article class="weather-info">
           <div class="current-weather" role="region" aria-labelledby="currentWeatherHeading">
+            <!-- LOADING placeholder inside current-weather (option 2: dots above text) -->
+            <div id="current-loading" class="current-loading state-hidden" aria-hidden="true">
+              <div class="loading-dot"><span></span><span></span><span></span></div>
+              <p>Loading...</p>
+            </div>
+
             <div class="location">
               <h2 id="currentWeatherHeading" class="city">Berlin, Germany</h2>
               <p class="date">Tuesday, Aug 5, 2025</p>
             </div>
 
-            <div class="temperature" aria-live="polite">
-              <img src="images/icon-sunny.webp" alt="Sunny" />
+            <div class="temperature weather-content">
+              <img src="images/icon-sunny.webp" alt="Sunny" class="current-icon" />
               <p class="temp">20&deg;</p>
             </div>
           </div>
 
-          <div class="extra-info" aria-label="Additional weather info">
+          <div class="extra-info weather-content" aria-label="Additional weather info">
             <div class="info-card">
               <p>Feels like</p>
               <h4>18&deg;</h4>
@@ -137,43 +135,37 @@
         <section class="daily-section" aria-labelledby="dailyForecastHeading">
           <h3 id="dailyForecastHeading" class="daily-forecast-header">Daily forecast</h3>
 
-          <ul class="daily-forecast" role="list">
+          <ul class="daily-forecast weather-content" role="list">
             <li class="daily-item">
               <p class="day">Tue</p>
               <img src="images/icon-rain.webp" alt="Rain" />
               <div class="degree-bottom"><span>20&deg;</span><span>14&deg;</span></div>
             </li>
-
             <li class="daily-item">
               <p class="day">Wed</p>
               <img src="images/icon-drizzle.webp" alt="Drizzle" />
               <div class="degree-bottom"><span>21&deg;</span><span>15&deg;</span></div>
             </li>
-
             <li class="daily-item">
               <p class="day">Thu</p>
               <img src="images/icon-sunny.webp" alt="Sunny" />
               <div class="degree-bottom"><span>24&deg;</span><span>14&deg;</span></div>
             </li>
-
             <li class="daily-item">
               <p class="day">Fri</p>
               <img src="images/icon-partly-cloudy.webp" alt="Partly Cloudy" />
               <div class="degree-bottom"><span>25&deg;</span><span>13&deg;</span></div>
             </li>
-
             <li class="daily-item">
               <p class="day">Sat</p>
               <img src="images/icon-storm.webp" alt="Storm" />
               <div class="degree-bottom"><span>21&deg;</span><span>15&deg;</span></div>
             </li>
-
             <li class="daily-item">
               <p class="day">Sun</p>
               <img src="images/icon-snow.webp" alt="Snow" />
               <div class="degree-bottom"><span>25&deg;</span><span>16&deg;</span></div>
             </li>
-
             <li class="daily-item">
               <p class="day">Mon</p>
               <img src="images/icon-fog.webp" alt="Fog" />
@@ -185,7 +177,7 @@
 
       <!-- RIGHT COLUMN: hourly -->
       <aside class="right-col" aria-labelledby="hourlyHeading">
-        <div class="hourly-forecast" role="region" aria-labelledby="hourlyHeading">
+        <div class="hourly-forecast weather-content" role="region" aria-labelledby="hourlyHeading">
           <div class="hourly-header">
             <h3 id="hourlyHeading">Hourly Forecast</h3>
 
@@ -211,7 +203,6 @@
               </div>
               <span class="hour-temp">20&deg;</span>
             </li>
-
             <li class="hourly-item">
               <div class="time-icon">
                 <img src="images/icon-partly-cloudy.webp" alt="Partly Cloudy" />
@@ -219,7 +210,6 @@
               </div>
               <span class="hour-temp">20&deg;</span>
             </li>
-
             <li class="hourly-item">
               <div class="time-icon">
                 <img src="images/icon-sunny.webp" alt="Sunny" />
@@ -227,7 +217,6 @@
               </div>
               <span class="hour-temp">20&deg;</span>
             </li>
-
             <li class="hourly-item">
               <div class="time-icon">
                 <img src="images/icon-overcast.webp" alt="Overcast" />
@@ -235,7 +224,6 @@
               </div>
               <span class="hour-temp">19&deg;</span>
             </li>
-
             <li class="hourly-item">
               <div class="time-icon">
                 <img src="images/icon-snow.webp" alt="Snow" />
@@ -243,7 +231,6 @@
               </div>
               <span class="hour-temp">18&deg;</span>
             </li>
-
             <li class="hourly-item">
               <div class="time-icon">
                 <img src="images/icon-fog.webp" alt="Fog" />
@@ -251,7 +238,6 @@
               </div>
               <span class="hour-temp">18&deg;</span>
             </li>
-
             <li class="hourly-item">
               <div class="time-icon">
                 <img src="images/icon-snow.webp" alt="Snow" />
@@ -259,7 +245,6 @@
               </div>
               <span class="hour-temp">17&deg;</span>
             </li>
-
             <li class="hourly-item">
               <div class="time-icon">
                 <img src="images/icon-overcast.webp" alt="Overcast" />

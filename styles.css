@@ -50,63 +50,65 @@ body {
 }
 
 
+/* small helper to hide elements */
 .state-hidden {
   display: none !important;
 }
 
-.state {
-  text-align: center;
-  margin-top: 2rem;
+/* loader inside current-weather (option 2: dots above the text) */
+.current-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 16px;
+  border-radius: 12px;
+  width: 100%;
+  background: rgba(255,255,255,0.02);
   color: var(--Neutral-300);
 }
 
-.loading-box{
-  background-color: var(--Neutral-600);
-  border-radius: 14px;
-  padding :40px;
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.loading-dot{
+/* three dots */
+.current-loading .loading-dot {
   display: flex;
-  justify-content: center;
   gap: 10px;
-  margin-bottom: 10px;
 }
-
-.loading-dot span{
-  width: 15px;
-  height: 15px;
-  background-color: var(--ORANGE);
+.current-loading .loading-dot span {
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  display: block;
-  }
+  background: var(--ORANGE);
+  display: inline-block;
+  opacity: 0.2;
+  animation: loader-bounce 1s infinite;
+}
+.current-loading .loading-dot span:nth-child(2) { animation-delay: 0.12s; }
+.current-loading .loading-dot span:nth-child(3) { animation-delay: 0.24s; }
 
-#no-results-state .state-message{
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
+@keyframes loader-bounce {
+  0% { transform: translateY(0); opacity: 0.25; }
+  50% { transform: translateY(-8px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.25; }
 }
 
-#error-state .error-icon{
-  font-size: 3rem;
-  margin-bottom: 10px;
+/* hide only the .weather-content elements when loading */
+.weather-content.hidden {
+  visibility: hidden;
 }
 
-#error-state h2{
-  margin-bottom: 8px;
+/* when the error state is active we hide the search bar (as requested) */
+.error-active .search-bar {
+  display: none;
 }
 
-.retry-btn{
-  margin-top: 15px;
-  background-color: var(--Neutral-600);
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  color: var(--Neutral-200);
+/* keep the no-results message styling */
+#no-results-state { text-align:center; color: var(--Neutral-300); margin-bottom: 12px; }
+
+/* ensure current-weather doesn't show background image while loading */
+.current-weather.loading {
+  background-image: none !important;
 }
+
 /* Controls wrapper */
 .controls {
   display: flex;
