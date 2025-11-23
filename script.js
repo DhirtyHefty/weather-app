@@ -491,7 +491,7 @@
     fetchAndRenderWeather(defaultLat, defaultLon);
   });
 
-  // ====== UI State helpers (as requested) ======
+  // UI State helpers
 
   function hideTopStates() {
     noResultsState.classList.add('state-hidden');
@@ -502,7 +502,7 @@
   function showNoResultsTop() {
     hideTopStates();
     noResultsState.classList.remove('state-hidden');
-    // clear the input (your request #3)
+    // clear the input 
     citySearch.value = '';
     // ensure weather content hidden
     weatherContentEls.forEach(el => el.classList.add('hidden'));
@@ -511,11 +511,12 @@
 
   function showErrorTop() {
     hideTopStates();
-    // hide search bar when error state active (your request #1)
+    // hide search bar when error state active
     document.body.classList.add('error-active');
     errorState.classList.remove('state-hidden');
     // hide weather content
     weatherContentEls.forEach(el => el.classList.add('hidden'));
+    document.querySelector('.current-weather').classList.add('hidden')
   }
 
   function showLoadingUI() {
@@ -555,6 +556,7 @@
       const defaultLat = 52.52, defaultLon = 13.405;
       fetchAndRenderWeather(defaultLat, defaultLon);
     }
+    document.querySelector('.current-weather').classList.remove('hidden');
   });
 
 })();
