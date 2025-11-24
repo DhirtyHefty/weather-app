@@ -49,11 +49,11 @@ body {
   height: auto;
 }
 
-
-/* small helper to hide elements */
-.state-hidden {
+.hidden{
   display: none !important;
 }
+/* small helper to hide elements */
+
 
 /* loader inside current-weather (option 2: dots above the text) */
 .current-loading {
