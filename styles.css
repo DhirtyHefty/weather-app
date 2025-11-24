@@ -49,79 +49,66 @@ body {
   height: auto;
 }
 
-.hidden{
+
+/* small helper to hide elements */
+.state-hidden {
   display: none !important;
 }
 /* small helper to hide elements */
 
 
-/* loader inside current-weather (option 2: dots above the text) */
-.current-loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 28px 16px;
-  border-radius: 12px;
-  width: 100%;
-  background: rgba(255,255,255,0.02);
+.state {
+  text-align: center;
+  margin-top: 2rem;
   color: var(--Neutral-300);
 }
 
-/* three dots */
-.current-loading .loading-dot {
+.loading-box{
+  background-color: var(--Neutral-600);
+  border-radius: 14px;
+  padding :40px;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.loading-dot{
   display: flex;
+  justify-content: center;
   gap: 10px;
+  margin-bottom: 10px;
 }
-.current-loading .loading-dot span {
-  width: 12px;
-  height: 12px;
+
+.loading-dot span{
+  width: 15px;
+  height: 15px;
+  background-color: var(--ORANGE);
   border-radius: 50%;
-  background: var(--ORANGE);
-  display: inline-block;
-  opacity: 0.2;
-  animation: loader-bounce 1s infinite;
-}
-.current-loading .loading-dot span:nth-child(2) { animation-delay: 0.12s; }
-.current-loading .loading-dot span:nth-child(3) { animation-delay: 0.24s; }
+  display: block;
+  }
 
-@keyframes loader-bounce {
-  0% { transform: translateY(0); opacity: 0.25; }
-  50% { transform: translateY(-8px); opacity: 1; }
-  100% { transform: translateY(0); opacity: 0.25; }
+#no-results-state .state-message{
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
 }
 
-/* hide only the .weather-content elements when loading */
-.weather-content.hidden {
-  visibility: hidden;
+#error-state .error-icon{
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
 
-/* when the error state is active we hide the search bar (as requested) */
-.error-active .search-bar {
-  display: none;
-}
-
-/* keep the no-results message styling */
-#no-results-state { text-align:center; color: var(--Neutral-300); margin-bottom: 12px; }
-
-/* ensure current-weather doesn't show background image while loading */
-.current-weather.loading {
-  background-image: none !important;
+#error-state h2{
+  margin-bottom: 8px;
 }
 
 .retry-btn{
-  background-color: var(--Neutral-700);
+  margin-top: 15px;
+  background-color: var(--Neutral-600);
   border: none;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
   color: var(--Neutral-200);
-}
-
-.reload-icon{
-  width: 13px;
-  margin-right: 5px ;
-  margin-top: 2px;
 }
 
 /* Controls wrapper */
