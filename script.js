@@ -581,18 +581,39 @@
     weatherContentEls.forEach(el => el.classList.add('state-hidden'));
   }
 
-  // Inline loader controls (safe guards)
-  function showInlineLoading(){
+  function showInlineLoading() {
     if (!inlineLoader) return;
-    inlineLoader.setAttribute('aria-hidden', 'false');
-    inlineLoader.classList.remove('state-hidden');
-  }
 
-  function hideInlineLoading(){
+    inlineLoader.classList.remove("state-hidden");
+    inlineLoader.setAttribute("aria-hidden", "false");
+
+    // DAILY CARDS
+    document.querySelectorAll(".daily-item").forEach(card => {
+        card.classList.add("loading-card");
+    });
+
+    // HOURLY CARDS
+    document.querySelectorAll(".hourly-item").forEach(card => {
+        card.classList.add("loading-card");
+    });
+}
+
+function hideInlineLoading() {
     if (!inlineLoader) return;
-    inlineLoader.setAttribute('aria-hidden', 'true');
-    inlineLoader.classList.add('state-hidden');
-  }
+
+    inlineLoader.classList.add("state-hidden");
+    inlineLoader.setAttribute("aria-hidden", "true");
+
+    // DAILY CARDS
+    document.querySelectorAll(".daily-item").forEach(card => {
+        card.classList.remove("loading-card");
+    });
+
+    // HOURLY CARDS
+    document.querySelectorAll(".hourly-item").forEach(card => {
+        card.classList.remove("loading-card");
+    });
+}
 
   // keep backward compat with earlier function name
   function hideLoadingUI(){

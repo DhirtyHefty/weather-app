@@ -582,6 +582,27 @@ h1, h2, h3 {
   100% { transform: scale(.7); opacity: .35; }
 }
 
+
+/* Keep card visible + keep size during loading */
+.loading-card {
+  position: relative;
+  min-height: 110px;  /* adjust if your card is taller */
+}
+
+/* Dimmed overlay while loading */
+.loading-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  border-radius: inherit;
+  z-index: 10;
+}
+
+/* Hide inner content without collapsing */
+.loading-card > * {
+  opacity: 0;
+}
 /* Responsive desktop */
 @media (min-width: 1024px) {
   .main-title {
