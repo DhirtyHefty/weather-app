@@ -587,18 +587,14 @@
     inlineLoader.classList.remove("state-hidden");
     inlineLoader.setAttribute("aria-hidden", "false");
 
-    // DAILY CARDS
-    document.querySelectorAll(".daily-item").forEach(card => {
-        card.classList.add("loading-card");
-    });
+    // Hide all main weather content while loading
+    document.querySelectorAll(
+      ".current-weather, .daily-section, .hourly-forecast, .extra-info"
+    ).forEach(el => el.classList.add("loading-hide"));
 
-    // HOURLY CARDS
-    document.querySelectorAll(".hourly-item").forEach(card => {
+    // Keep your card-shrink fix
+    document.querySelectorAll(".daily-item, .hourly-item, .info-card").forEach(card => {
         card.classList.add("loading-card");
-    });
-
-    document.querySelectorAll(".info-card").forEach(card => {
-      card.classList.add("loading-card")
     });
 }
 
@@ -608,20 +604,13 @@ function hideInlineLoading() {
     inlineLoader.classList.add("state-hidden");
     inlineLoader.setAttribute("aria-hidden", "true");
 
-    // DAILY CARDS
-    document.querySelectorAll(".daily-item").forEach(card => {
+    document.querySelectorAll(
+      ".current-weather, .daily-section, .hourly-forecast, .extra-info"
+    ).forEach(el => el.classList.remove("loading-hide"));
+
+    document.querySelectorAll(".daily-item, .hourly-item, .info-card").forEach(card => {
         card.classList.remove("loading-card");
     });
-
-    // HOURLY CARDS
-    document.querySelectorAll(".hourly-item").forEach(card => {
-        card.classList.remove("loading-card");
-    });
-
-    document.querySelectorAll(".info-card").forEach(card => {
-        card.classList.remove("loading-card");
-    });
-
 }
 
   // keep backward compat with earlier function name
