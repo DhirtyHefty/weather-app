@@ -603,6 +603,10 @@ h1, h2, h3 {
 .loading-card > * {
   opacity: 0;
 }
+
+.info-card.loading-card{
+  min-height: 70px;
+}
 /* Responsive desktop */
 @media (min-width: 1024px) {
   .main-title {
