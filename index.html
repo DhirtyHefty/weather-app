@@ -56,10 +56,9 @@
   <div class="main-top">
     <h1 class="main-title">How's the sky looking today?</h1>
 
-
-<section id="no-results-state" class="state-hidden">
-  <p class="state-message">No search results found</p>
-</section>
+    <section id="no-results-state" class="state-hidden">
+      <p class="state-message">No search results found</p>
+    </section>
 
     <section class="state-hidden" id="error-state">
       <img src="images/error-icon.svg" class="error-icon" alt="Error icon" />
@@ -90,10 +89,18 @@
   <main class="main-container" role="main">
     <div class="content-wrapper">
       <!-- LEFT COLUMN -->
-        
       <section class="left-col" aria-labelledby="currentWeatherHeading">
         <article class="weather-info">
+          <!-- current-weather must be position:relative so inline absolute loader overlays it -->
           <div class="current-weather" role="region" aria-labelledby="currentWeatherHeading">
+            <!-- INLINE LOADING OVERLAY (matches the template) -->
+            <div id="loading-inline-state" class="loading-inline state-hidden" aria-hidden="true">
+              <div class="loading-dot" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <p class="loading-text">Loading...</p>
+            </div>
+
             <div class="location">
               <h2 id="currentWeatherHeading" class="city">Berlin, Germany</h2>
               <p class="date">Tuesday, Aug 5, 2025</p>
@@ -205,62 +212,7 @@
               </div>
               <span class="hour-temp">20&deg;</span>
             </li>
-
-            <li class="hourly-item">
-              <div class="time-icon">
-                <img src="images/icon-partly-cloudy.webp" alt="Partly Cloudy" />
-                <span>4 PM</span>
-              </div>
-              <span class="hour-temp">20&deg;</span>
-            </li>
-
-            <li class="hourly-item">
-              <div class="time-icon">
-                <img src="images/icon-sunny.webp" alt="Sunny" />
-                <span>5 PM</span>
-              </div>
-              <span class="hour-temp">20&deg;</span>
-            </li>
-
-            <li class="hourly-item">
-              <div class="time-icon">
-                <img src="images/icon-overcast.webp" alt="Overcast" />
-                <span>6 PM</span>
-              </div>
-              <span class="hour-temp">19&deg;</span>
-            </li>
-
-            <li class="hourly-item">
-              <div class="time-icon">
-                <img src="images/icon-snow.webp" alt="Snow" />
-                <span>7 PM</span>
-              </div>
-              <span class="hour-temp">18&deg;</span>
-            </li>
-
-            <li class="hourly-item">
-              <div class="time-icon">
-                <img src="images/icon-fog.webp" alt="Fog" />
-                <span>8 PM</span>
-              </div>
-              <span class="hour-temp">18&deg;</span>
-            </li>
-
-            <li class="hourly-item">
-              <div class="time-icon">
-                <img src="images/icon-snow.webp" alt="Snow" />
-                <span>9 PM</span>
-              </div>
-              <span class="hour-temp">17&deg;</span>
-            </li>
-
-            <li class="hourly-item">
-              <div class="time-icon">
-                <img src="images/icon-overcast.webp" alt="Overcast" />
-                <span>10 PM</span>
-              </div>
-              <span class="hour-temp">17&deg;</span>
-            </li>
+            <!-- ... -->
           </ul>
         </div>
       </aside>
