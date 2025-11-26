@@ -582,33 +582,32 @@
   }
 
   function showInlineLoading() {
-    if (!inlineLoader) return;
-
     inlineLoader.classList.remove("state-hidden");
     inlineLoader.setAttribute("aria-hidden", "false");
 
-    // Hide all main weather content while loading
-    document.querySelectorAll(
-      ".current-weather, .daily-section, .hourly-forecast, .extra-info"
-    ).forEach(el => el.classList.add("loading-hide"));
+    // Hide weather image/icon 
+    const weatherIcon = document.querySelector("#weatherIcon, .weather-icon");
+    if (weatherIcon) {
+        weatherIcon.style.visibility = "hidden";
+    }
 
-    // Keep your card-shrink fix
-    document.querySelectorAll(".daily-item, .hourly-item, .info-card").forEach(card => {
+    // Hide internal content of cards but keep layout
+    document.querySelectorAll(".info-card, .daily-item, .hourly-item").forEach(card => {
         card.classList.add("loading-card");
     });
 }
 
 function hideInlineLoading() {
-    if (!inlineLoader) return;
-
     inlineLoader.classList.add("state-hidden");
     inlineLoader.setAttribute("aria-hidden", "true");
 
-    document.querySelectorAll(
-      ".current-weather, .daily-section, .hourly-forecast, .extra-info"
-    ).forEach(el => el.classList.remove("loading-hide"));
+    // Show weather icon again
+    const weatherIcon = document.querySelector("#weatherIcon, .weather-icon");
+    if (weatherIcon) {
+        weatherIcon.style.visibility = "visible";
+    }
 
-    document.querySelectorAll(".daily-item, .hourly-item, .info-card").forEach(card => {
+    document.querySelectorAll(".info-card, .daily-item, .hourly-item").forEach(card => {
         card.classList.remove("loading-card");
     });
 }
