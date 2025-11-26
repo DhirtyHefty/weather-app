@@ -586,12 +586,16 @@
     inlineLoader.setAttribute("aria-hidden", "false");
 
     // Hide weather image/icon 
-    const weatherIcon = document.querySelector("#weatherIcon, .weather-icon");
+    const weatherIcon = document.querySelector(".temperature img");
+    const weatherTemp = document.querySelector(".temperature .temp");
     if (weatherIcon) {
         weatherIcon.style.visibility = "hidden";
     }
+    if (weatherIcon) {
+        weatherTemp.style.visibility = "hidden";
+    }
 
-    // Hide internal content of cards but keep layout
+    // Hide inner content of cards but keep layout
     document.querySelectorAll(".info-card, .daily-item, .hourly-item").forEach(card => {
         card.classList.add("loading-card");
     });
@@ -602,7 +606,11 @@ function hideInlineLoading() {
     inlineLoader.setAttribute("aria-hidden", "true");
 
     // Show weather icon again
-    const weatherIcon = document.querySelector("#weatherIcon, .weather-icon");
+    const weatherIcon = document.querySelector(".temperature img");
+    const weatherTemp = document.querySelector(".temperature .temp");
+    if (weatherTemp) {
+        weatherTemp.style.visibility = "visible";
+    }
     if (weatherIcon) {
         weatherIcon.style.visibility = "visible";
     }
