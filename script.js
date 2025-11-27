@@ -92,7 +92,7 @@
    * showState:
    * - "content" => show main content
    * - "no-results" / "error" => hide main content and show top state
-   * - "loading" => keep main content visible (we use the inline loader for the big card)
+   * - "loading" => keep main content visible 
    */
   function showState(state) {
     hideAllStates();
@@ -558,82 +558,92 @@
     fetchAndRenderWeather(defaultLat, defaultLon);
   });
 
-  // ====== UI State helpers======
+  
+// ====== UI State helpers ======
+function hideTopStates() {
+  if (noResultsState) noResultsState.classList.add('state-hidden');
+  if (errorState) errorState.classList.add('state-hidden');
+  document.body.classList.remove('error-active');
 
-  function hideTopStates() {
-    if (noResultsState) noResultsState.classList.add('state-hidden');
-    if (errorState) errorState.classList.add('state-hidden');
-    document.body.classList.remove('error-active');
+  // Bring search bar back safely
+  const searchBar = document.querySelector('.search-bar');
+  if (searchBar) {
+    searchBar.classList.remove('state-hidden');
   }
+}
 
-  function showNoResultsTop() {
-    hideTopStates();
-    if (noResultsState) noResultsState.classList.remove('state-hidden');
-    if (citySearch) citySearch.value = '';
-    // hide weather content
-    weatherContentEls.forEach(el => el.classList.add('state-hidden'));
+function showNoResultsTop() {
+  hideTopStates();
+  if (noResultsState) noResultsState.classList.remove('state-hidden');
+  if (citySearch) citySearch.value = '';
+  // hide weather content
+  weatherContentEls.forEach(el => el.classList.add('state-hidden'));
+}
+
+function showErrorTop() {
+  hideTopStates();
+  document.body.classList.add('error-active');
+  if (errorState) errorState.classList.remove('state-hidden');
+  
+  // Hide search bar safely
+  const searchBar = document.querySelector('.search-bar');
+  if (searchBar) {
+    searchBar.classList.add('state-hidden');
   }
+  
+  weatherContentEls.forEach(el => el.classList.add('state-hidden'));
+}
 
-  function showErrorTop() {
-    hideTopStates();
-    document.body.classList.add('error-active');
-    if (errorState) errorState.classList.remove('state-hidden');
-    weatherContentEls.forEach(el => el.classList.add('state-hidden'));
-  }
+function showInlineLoading() {
+  inlineLoader.classList.remove("state-hidden");
+  inlineLoader.setAttribute("aria-hidden", "false");
 
-  function showInlineLoading() {
-    inlineLoader.classList.remove("state-hidden");
-    inlineLoader.setAttribute("aria-hidden", "false");
+  // Hide weather image/icon
+  const weatherIcon = document.querySelector(".temperature img");
+  const weatherTemp = document.querySelector(".temperature .temp");
+  if (weatherIcon) weatherIcon.style.visibility = "hidden";
+  if (weatherTemp) weatherTemp.style.visibility = "hidden";
 
-    // Hide weather image/icon 
-    const weatherIcon = document.querySelector(".temperature img");
-    const weatherTemp = document.querySelector(".temperature .temp");
-    if (weatherIcon) {
-        weatherIcon.style.visibility = "hidden";
-    }
-    if (weatherIcon) {
-        weatherTemp.style.visibility = "hidden";
-    }
-
-    // Hide inner content of cards but keep layout
-    document.querySelectorAll(".info-card, .daily-item, .hourly-item").forEach(card => {
-        card.classList.add("loading-card");
-    });
-
-    document.querySelector(".hourly-forecast")?.classList.add("loading-lock");
+  // Hide inner content of cards but keep layout
+  document.querySelectorAll(".info-card, .daily-item, .hourly-item").forEach(card => {
+    card.classList.add("loading-card");
+  });
+  document.querySelector(".hourly-forecast")?.classList.add("loading-lock");
 }
 
 function hideInlineLoading() {
-    inlineLoader.classList.add("state-hidden");
-    inlineLoader.setAttribute("aria-hidden", "true");
+  inlineLoader.classList.add("state-hidden");
+  inlineLoader.setAttribute("aria-hidden", "true");
 
-    // Show weather icon again
-    const weatherIcon = document.querySelector(".temperature img");
-    const weatherTemp = document.querySelector(".temperature .temp");
-    if (weatherTemp) {
-        weatherTemp.style.visibility = "visible";
-    }
-    if (weatherIcon) {
-        weatherIcon.style.visibility = "visible";
-    }
+  // Show weather icon again
+  const weatherIcon = document.querySelector(".temperature img");
+  const weatherTemp = document.querySelector(".temperature .temp");
+  if (weatherIcon) weatherIcon.style.visibility = "visible";
+  if (weatherTemp) weatherTemp.style.visibility = "visible";
 
-    document.querySelectorAll(".info-card, .daily-item, .hourly-item").forEach(card => {
-        card.classList.remove("loading-card");
-    });
-
-    document.querySelector(".hourly-forecast")?.classList.remove("loading-lock");
+  document.querySelectorAll(".info-card, .daily-item, .hourly-item").forEach(card => {
+    card.classList.remove("loading-card");
+  });
+  document.querySelector(".hourly-forecast")?.classList.remove("loading-lock");
 }
 
-  // keep backward compat with earlier function name
-  function hideLoadingUI(){
-    hideInlineLoading();
-  }
+// backward compat
+function hideLoadingUI() {
+  hideInlineLoading();
+}
 
-  function showContentUI() {
-    hideTopStates();
-    hideLoadingUI();
-    weatherContentEls.forEach(el => el.classList.remove('state-hidden'));
-    document.body.classList.remove('error-active');
+function showContentUI() {
+  hideTopStates();
+  hideLoadingUI();
+  weatherContentEls.forEach(el => el.classList.remove('state-hidden'));
+  document.body.classList.remove('error-active');
+
+  // Bring search bar back safely
+  const searchBar = document.querySelector('.search-bar');
+  if (searchBar) {
+    searchBar.classList.remove('state-hidden');
   }
+}
+
 
 })();

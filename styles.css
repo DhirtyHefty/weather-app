@@ -607,6 +607,11 @@ h1, h2, h3 {
   opacity: 0;
 }
 
+body.error-active .search-bar,
+body.error-active .main-title{
+  display: none !important;
+}
+
 
 /* Responsive desktop */
 @media (min-width: 1024px) {
