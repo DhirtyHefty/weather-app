@@ -60,7 +60,7 @@ body {
   color: var(--Neutral-300);
 }
 
-/* existing loading-box (if used elsewhere) kept */
+/* existing loading-box  kept */
 .loading-box{
   background-color: var(--Neutral-600);
   border-radius: 14px;
@@ -83,6 +83,12 @@ body {
   background-color: var(--ORANGE);
   border-radius: 50%;
   display: block;
+}
+
+.hourly-forecast.loading-lock{
+  min-height: 1px;
+  position: relative;
+  width: 100%;
 }
 
 #no-results-state .state-message{
@@ -296,7 +302,7 @@ body {
 }
 
 .current-weather {
-  position: relative;       /* <-- required so the inline overlay positions correctly */
+  position: relative;       /* required so the inline overlay positions correctly */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -306,12 +312,12 @@ body {
   background-repeat: no-repeat;
   background-position: right bottom;
   background-size: cover;
-  min-height: 160px;        /* a comfortable height similar to template */
+  min-height: 160px;        
 }
 
 /* make sure overlay doesn't overflow circular corners */
-.current-weather > .loading-inline {
-  border-radius: 16px;
+.current-weather  .loading-inline {
+  border-radius: 0 !important;
   overflow: hidden;
 }
 
@@ -515,13 +521,11 @@ h1, h2, h3 {
   font-family: var(--FF-BR);
 }
 
-/* ---------------------------
-   INLINE LOADING (template)
-   --------------------------- */
+/* INLINE LOADING (template)*/
 .loading-inline{
   position: absolute;
   inset: 0;
-  background: rgba(35,34,49,0.75); /* dark translucent */
+  background: var(--Neutral-900);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   display: flex;
@@ -558,7 +562,6 @@ h1, h2, h3 {
   height: 12px;
   background: var(--Neutral-0);
   border-radius: 50%;
-  opacity: .45;
   transform: scale(.8);
   animation: dotPulse 0.9s infinite ease-in-out;
 }
@@ -595,7 +598,7 @@ h1, h2, h3 {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.25);
-  border-radius: inherit;
+  border-radius: 0;
   z-index: 10;
 }
 
@@ -666,5 +669,135 @@ h1, h2, h3 {
 
   .hourly-item {
     padding: 1px;
+  }
+}
+
+/* TABLET VIEW (600px–899px) */
+@media (min-width: 600px) and (max-width: 899px) {
+
+  /* ---- GLOBAL ---- */
+  body {
+    padding: 24px 32px;
+  }
+
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* ---- HEADER ---- */
+  header {
+    justify-content: space-between;
+    padding: 0 8px;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  /* ---- SEARCH ---- */
+  h1 {
+    font-size: 1.9rem;
+    margin-bottom: 18px;
+  }
+
+  .search-bar {
+    width: 100%;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .search-bar input,
+  .search-bar button {
+    height: 46px;
+    font-size: 1rem;
+  }
+
+  /* CURRENT WEATHER (FIXED)*/
+  .current-weather {
+    margin-top: 28px;
+    padding: 24px;
+    min-height: 170px;
+    border-radius: 5px !important;            
+    background-position: center bottom;      
+    background-image:  url('images/bg-today-large.svg');
+  }
+
+  .current-weather img {
+    border-radius: 0 !important;            
+  }
+
+  .current-weather .loading-inline {
+    border-radius: 0 !important;            
+  }
+
+  .current-weather .location h2 {
+    font-size: 1.4rem;
+  }
+
+  .current-weather .location p {
+    font-size: 0.95rem;
+  }
+
+  .current-weather .temperature img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+  }
+
+  .current-weather .temperature .temp {
+    font-size: 2.8rem;
+  }
+
+  /* ---- EXTRA INFO ---- */
+  .extra-info {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .info-card {
+    padding: 18px;
+    border-radius: 12px;
+    min-height: 80px;
+  }
+
+  /* ---- DAILY FORECAST ---- */
+  .daily-section-title {
+    margin-top: 32px;
+    font-size: 1.3rem;
+  }
+
+  .daily-forecast {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  .daily-item {
+    padding: 18px;
+    min-height: 120px;
+    border-radius: 12px;
+  }
+
+  .daily-item img {
+    width: 48px;
+  }
+
+  /* ---- HOURLY ---- */
+  .hourly-item {
+    padding: 14px;
+    min-height: 80px; 
+    border-radius: 10px;
+  }
+
+  .hourly-item img {
+    width: 40px;
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
   }
 }

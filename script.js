@@ -599,6 +599,8 @@
     document.querySelectorAll(".info-card, .daily-item, .hourly-item").forEach(card => {
         card.classList.add("loading-card");
     });
+
+    document.querySelector(".hourly-forecast")?.classList.add("loading-lock");
 }
 
 function hideInlineLoading() {
@@ -618,6 +620,8 @@ function hideInlineLoading() {
     document.querySelectorAll(".info-card, .daily-item, .hourly-item").forEach(card => {
         card.classList.remove("loading-card");
     });
+
+    document.querySelector(".hourly-forecast")?.classList.remove("loading-lock");
 }
 
   // keep backward compat with earlier function name
